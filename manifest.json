@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "tab-url-extractor",
+  "version": "1.1.0",
+  "description": "Extract, normalize and export URLs from open tabs in structured format",
+  "icons": {
+    "16": "popup/assets/icons/icon-16.png",
+    "48": "popup/assets/icons/icon-48.png",
+    "128": "popup/assets/icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "popup/assets/icons/icon-16.png",
+      "48": "popup/assets/icons/icon-48.png",
+      "128": "popup/assets/icons/icon-128.png"
+    },
+    "default_title": "Tab URL Extractor"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "permissions": [
+    "tabs",
+    "downloads"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

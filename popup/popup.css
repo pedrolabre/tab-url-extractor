@@ -1,0 +1,505 @@
+/**
+ * Popup Styles - Tab URL Extractor
+ * Design: Clean, modern, minimal
+ * Versão: 1.0.0
+ */
+
+/* ========================================
+   Variables
+   ======================================== */
+:root {
+  /* Colors */
+  --color-primary: #4285f4;
+  --color-primary-hover: #3367d6;
+  --color-primary-active: #2952b3;
+  --color-secondary: #5f6368;
+  --color-secondary-hover: #4a4d50;
+  --color-success: #34a853;
+  --color-error: #ea4335;
+  --color-warning: #fbbc04;
+  
+  /* Neutrals */
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-border: #dadce0;
+  --color-text-primary: #202124;
+  --color-text-secondary: #5f6368;
+  --color-text-disabled: #9aa0a6;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --shadow-md: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  width: 400px;
+  min-width: 400px;
+  height: 600px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================
+   App Container
+   ======================================== */
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 600px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+.header {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.header-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.header-version {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   State Containers
+   ======================================== */
+.state-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+  overflow-y: auto;
+  min-height: 0; /* Importante para flex scroll */
+}
+
+.state-container.hidden {
+  display: none;
+}
+
+/* ========================================
+   Content Centered
+   ======================================== */
+.content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 240px;
+}
+
+.icon-large {
+  width: 64px;
+  height: 64px;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.icon-error {
+  color: var(--color-error);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  max-width: 280px;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn-primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn-primary:disabled {
+  background: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface);
+}
+
+.btn-secondary:active {
+  background: var(--color-border);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ========================================
+   Loading Spinner
+   ======================================== */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.loading-subtext {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   Summary
+   ======================================== */
+.summary {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.summary-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-label {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.summary-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ========================================
+   Actions
+   ======================================== */
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.actions .btn {
+  flex: 1;
+  padding: 6px var(--spacing-sm);
+  font-size: 13px;
+}
+
+/* ========================================
+   Format Selector
+   ======================================== */
+.format-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.format-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.format-select {
+  flex: 1;
+  padding: 6px var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--color-text-primary);
+  background: white;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.format-select:hover {
+  border-color: var(--color-primary);
+}
+
+.format-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.1);
+}
+
+/* ========================================
+   Matrices Container
+   ======================================== */
+.matrices-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
+  overflow-y: auto;
+  padding-right: var(--spacing-xs);
+  min-height: 0;
+}
+
+/* Scrollbar */
+.matrices-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.matrices-container::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+}
+
+.matrices-container::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.matrices-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-disabled);
+}
+
+/* ========================================
+   Matrix Item
+   ======================================== */
+.matrix-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.matrix-item:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.matrix-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.matrix-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.matrix-count {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.matrix-count-value {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.btn-extract {
+  padding: 4px var(--spacing-sm);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* ========================================
+   Error State
+   ======================================== */
+.error-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.error-message {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+  max-width: 300px;
+}
+
+/* ========================================
+   Toast Notification
+   ======================================== */
+.toast {
+  position: fixed;
+  bottom: var(--spacing-md);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-success);
+  color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  animation: slideUp 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+  z-index: 1000;
+}
+
+.toast.hidden {
+  display: none;
+}
+
+.toast-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.toast-message {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* ========================================
+   Utilities
+   ======================================== */
+.hidden {
+  display: none !important;
+}
+
+/* ========================================
+   Responsive (se necessário)
+   ======================================== */
+@media (max-width: 400px) {
+  body {
+    width: 100%;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .summary {
+    flex-direction: column;
+  }
+}

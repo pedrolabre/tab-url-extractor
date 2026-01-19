@@ -1,0 +1,10 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Matches the minimal glyph used in docs/TUE-Documentation-v1.html (brand-badge) -->
+      <rect x="0" y="0" width="128" height="128" rx="43" fill="#4285F4"/>
+
+      <!-- Scale the 24x24 glyph to the same ratio as docs: 18px glyph inside 30px badge (60%) -->
+      <g transform="translate(25.6 25.6) scale(3.2)" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 7v10a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V7" stroke-width="2.6" />
+            <path d="M6 6h12" />
+      </g>
+</svg>

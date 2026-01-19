@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content="0; url=./TUE-Documentation-v1.html" />
+    <title>Tab URL Extractor — Documentation</title>
+    <style>
+      :root { color-scheme: light; }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+        margin: 0;
+        padding: 24px;
+        background: #f6f7f9;
+        color: #111827;
+      }
+      .card {
+        max-width: 720px;
+        margin: 8vh auto 0;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 18px 18px;
+        box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
+      }
+      a { color: #2563eb; text-decoration: none; font-weight: 600; }
+      a:hover { text-decoration: underline; }
+      .muted { color: #6b7280; }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 style="margin: 0 0 8px; font-size: 18px;">Tab URL Extractor — Documentação</h1>
+      <p style="margin: 0 0 12px;" class="muted">
+        Redirecionando para <code>TUE-Documentation-v1.html</code>…
+      </p>
+      <p style="margin: 0;">
+        Se não redirecionar automaticamente, abra:
+        <a href="./TUE-Documentation-v1.html">TUE-Documentation-v1.html</a>
+      </p>
+    </div>
+
+    <script>
+      // Redireciona também via JS (melhor compatibilidade com GitHub Pages e caches)
+      (function () {
+        var target = './TUE-Documentation-v1.html';
+        if (location.pathname.endsWith('/index.html')) {
+          location.replace(target);
+          return;
+        }
+        // Quando GitHub Pages serve /docs/ como diretório
+        if (location.pathname.endsWith('/docs/') || location.pathname.endsWith('/docs')) {
+          location.replace(target);
+        }
+      })();
+    </script>
+  </body>
+</html>
